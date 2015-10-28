@@ -7,4 +7,8 @@ import java.util.ArrayList;
 public class Found {
     private String file_name;
     private ArrayList<String> matching_lines_in_file;
+
+    public Found() {
+        // TODO: implement
+    }
 }

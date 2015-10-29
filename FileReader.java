@@ -16,14 +16,17 @@ public class FileReader extends Thread {
   }
 
   public void readFile() {
-    try (BufferedReader br = new BufferedReader(new java.io.FileReader(fileName))) {
-      String line;
-      while ((line = br.readLine()) != null) {
-        matchLine(line);
-      }
-    } catch (Exception e)  {
-      System.err.println("Error in readfile");
-    }
+	  BufferedReader br;
+		try {
+			br = new BufferedReader(new java.io.FileReader(fileName));
+			String line;
+			while ((line = br.readLine()) != null) {
+				matchLine(line);
+			} 
+			br.close();
+	    } catch (Exception e)  {
+	      System.err.println("Error in readfile");
+	    }
   }
 
   public void matchLine(String line) {

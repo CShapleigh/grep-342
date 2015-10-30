@@ -16,7 +16,7 @@ public class CGrep {
 			  @Override
 			  public Found call() throws Exception {
 				  FileReader fr = new FileReader(file, pattern);
-          fr.start();
+          fr.readFile();
 				  return fr.found;
 			  }
 		  });
@@ -28,7 +28,10 @@ public class CGrep {
 		  try {
 			final Future<Found> future = ecs.take();
 			final Found found = future.get();
-			System.out.println(found.getFileName());
+			if (found.hasMatch()) {
+        System.out.println("File with matches: " + found.getFileName());
+        System.out.println("Lines matched: ");
+      }
 			for (String line : found.getMatchingLinesInFile()) {
 				System.out.println(line);
 			}

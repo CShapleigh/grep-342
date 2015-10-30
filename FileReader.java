@@ -1,6 +1,6 @@
 import java.util.regex.*;
 import java.io.*;
-public class FileReader extends Thread {
+public class FileReader {
   Found found;
   String fileName;
   String regexPattern;
@@ -9,10 +9,6 @@ public class FileReader extends Thread {
     this.fileName = fileName;
     this.regexPattern = regexPattern;
     found = new Found(fileName);
-  }
-
-  public void run() {
-    readFile();
   }
 
   public void readFile() {

@@ -4,6 +4,6 @@ Grep Activity
 Complile: ```javac *.java```
 
 
-Run: ```java CGrep a test.txt test2.txt```
+Run: ```java CGrep a test.txt test2.txt test3.txt```
 
-Should only add one line from test.txt ('test a')
+Should return two results; test.txt, one line and test3.txt, all lines

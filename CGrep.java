@@ -10,17 +10,20 @@ public class CGrep {
 	  }
 	  final ExecutorService pool = Executors.newFixedThreadPool(3);
 	  final ExecutorCompletionService<Found> ecs = new ExecutorCompletionService<>(pool);
-	  
+
 	  for(final String file : files){
 		  ecs.submit(new Callable<Found>() {
 			  @Override
 			  public Found call() throws Exception {
 				  FileReader fr = new FileReader(file, pattern);
+          fr.start();
 				  return fr.found;
 			  }
 		  });
 	  }
-	  
+    
+    pool.shutdown();
+
 	  for(int i = 0; i < files.size(); i++){
 		  try {
 			final Future<Found> future = ecs.take();

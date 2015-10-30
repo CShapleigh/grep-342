@@ -22,7 +22,7 @@ public class FileReader extends Thread {
 			String line;
 			while ((line = br.readLine()) != null) {
 				matchLine(line);
-			} 
+			}
 			br.close();
 	    } catch (Exception e)  {
 	      System.err.println("Error in readfile");
